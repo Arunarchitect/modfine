@@ -18,6 +18,11 @@ from .models import SubscribedUsers
 
 # Create your views here.
 
+def signup_redirect(request):
+    messages.error(request, "It may be that you already have account with this email, please try Login with the email!")
+    return redirect("home")
+
+
 def activate(request, uidb64, token):
     User = get_user_model()
     try:
