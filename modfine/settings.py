@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-%f&053zz*131c4v)252p$f6s!q@i2!=5*+5$u$m5ww97$wpipk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -191,8 +191,8 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-RECAPTCHA_PUBLIC_KEY = '6LfA_bsmAAAAAKxy_nK87Np4g2xFetl3wWb_niUP'
-RECAPTCHA_PRIVATE_KEY = '6LfA_bsmAAAAAMl0WbOjrCH5fl6A_7QFZhe77LFY'
+RECAPTCHA_PUBLIC_KEY = '6LfBduMmAAAAAIZ22iAboOOnibHYtUxqIxA1jRRP'
+RECAPTCHA_PRIVATE_KEY = '6LfBduMmAAAAAGwmCw1NWH3V-i-HoUv73s6UEjzV'
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
@@ -208,3 +208,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT = 300
+
+CSRF_TRUSTED_ORIGINS = ['https://www.modelflick.com','https://modelflick.com','http://127.0.0.1:8000/']
