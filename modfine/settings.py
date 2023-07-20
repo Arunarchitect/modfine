@@ -45,9 +45,17 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'captcha',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+SITE_ID = 1
+SOCIALACCOUNT_LOGIN_ON_GET=True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -169,7 +177,22 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
-AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
+AUTHENTICATION_BACKENDS = [
+    'users.backends.EmailBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+    ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 RECAPTCHA_PUBLIC_KEY = '6LfA_bsmAAAAAKxy_nK87Np4g2xFetl3wWb_niUP'
 RECAPTCHA_PRIVATE_KEY = '6LfA_bsmAAAAAMl0WbOjrCH5fl6A_7QFZhe77LFY'
